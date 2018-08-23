@@ -3,14 +3,16 @@ const fs = require('fs');
 const os = require('os');
 
 console.log("helllllllllooooo");
-fs.appendFile('intro.txt', "Helloo world",function(err){
-	if(err)
-	{
-		console.log("can't write to the file")
-	}
-});
+// fs.appendFile('intro.txt', "Helloo world",function(err){
+// 	if(err)
+// 	{
+// 		console.log("can't write to the file")
+// 	}
+// });
 
 
 let user = os.userInfo();
-console.log(user);
+// console.log(user);
+fs.appendFileSync('intro.txt',"helloo" +user.username + "!!!");
+fs.appendFileSync('intro.txt',`helloo ${user.username} !!!`);
 
