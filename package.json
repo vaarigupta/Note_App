@@ -1,0 +1,22 @@
+{
+  "name": "note_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaarigupta/Note_App.git"
+  },
+  "author": "vaari gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaarigupta/Note_App/issues"
+  },
+  "homepage": "https://github.com/vaarigupta/Note_App#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
