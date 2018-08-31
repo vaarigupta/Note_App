@@ -1,10 +1,12 @@
 console.log("STARTING app.js");
 
+//const os = require('os');
 const fs = require('fs');
-const os = require('os');
-const note = require("./notes.js");
 const _ = require('lodash');
+const yargs = require('yargs');
 
+
+const note = require("./notes.js");
 
 // fs.appendFile('intro.txt', "Helloo world",function(err){
 // 	if(err)
@@ -42,6 +44,7 @@ const _ = require('lodash');
 // //console.log(process) -gives 
 //console.log(process.argv)
 var command = process.argv[2]
+const argv = yargs.argv;
 if(command === 'list')
 {
 	console.log("Listing notes")
@@ -62,4 +65,6 @@ else
 {
 	console.log('not recognisable')
 }
+console.log("process" , process.argv);
+console.log("yargs" , argv);
 
