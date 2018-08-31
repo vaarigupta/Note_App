@@ -8,6 +8,47 @@ const yargs = require('yargs');
 
 const note = require("./notes.js");
 
+
+var command = process.argv[2]
+const argv = yargs.argv; // yargs is an object having a key argv which is again an  object type of getter
+//console.log("process" , process.argv); 
+// whatever the input is given in the command line , yargs appends all of them in a list
+// If we use --anything ="xyz" then we create a key value pair which becomes accessible to implement necessary functionalities to them
+if(command === 'list')
+{
+	//console.log("Listing notes")
+	note.getAll();
+}
+else if(command === 'add')
+{
+	//console.log('adding notes')
+	note.addNote(argv.title , argv.body);
+}
+else if(command === 'remove')
+{
+	//console.log('removing notes')
+	note.removeNote(argv.title);
+}
+else if(command === 'read')
+{
+	//console.log('reading my notes')
+	note.readNote(argv.title);
+
+}
+else
+{
+	console.log('not recognisable')
+}
+console.log("yargs" , argv);
+
+
+
+
+
+
+
+
+
 // fs.appendFile('intro.txt', "Helloo world",function(err){
 // 	if(err)
 // 	{
@@ -43,28 +84,3 @@ const note = require("./notes.js");
 // console.log(_.uniq([1,2,3,3,4,5,5,2,2,4,4,4,4 , 3,78,89,789])); // it gives the unique elements of an array passed to it
 // //console.log(process) -gives 
 //console.log(process.argv)
-var command = process.argv[2]
-const argv = yargs.argv;
-if(command === 'list')
-{
-	console.log("Listing notes")
-}
-else if(command === 'add')
-{
-	console.log('adding notes')
-}
-else if(command === 'remove')
-{
-	console.log('removing notes')
-}
-else if(command === 'read')
-{
-	console.log('reading my notes')
-}
-else
-{
-	console.log('not recognisable')
-}
-console.log("process" , process.argv);
-console.log("yargs" , argv);
-
