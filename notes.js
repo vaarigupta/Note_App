@@ -3,7 +3,7 @@ const yargs = require('yargs');
 const argv = yargs.argv;
 const addNote = (title,body)=>
 {
-	console.log('Adding Notes' , title , body);
+	
 }
 const getAll = ()=>
 {

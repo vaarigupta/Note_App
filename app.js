@@ -39,7 +39,9 @@ else
 {
 	console.log('not recognisable')
 }
-console.log("yargs" , argv);
+console.log("yargs argv object:-" , argv);
+//console.log(process);
+//console.log(yargs);
 
 
 
