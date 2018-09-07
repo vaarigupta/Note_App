@@ -6,7 +6,7 @@ const _ = require('lodash');
 const yargs = require('yargs');
 
 
-const note = require("./notes.js");
+const notes = require("./notes.js");
 
 
 var command = process.argv[2]
@@ -17,22 +17,33 @@ const argv = yargs.argv; // yargs is an object having a key argv which is again 
 if(command === 'list')
 {
 	//console.log("Listing notes")
-	note.getAll();
+	notes.getAll();
 }
 else if(command === 'add')
 {
 	//console.log('adding notes')
-	note.addNote(argv.title , argv.body);
+	var note = notes.addNote(argv.title , argv.body);
+	if(note)
+	{
+		console.log("A new note is added")
+		console.log("--")
+		console.log(`Title : ${note.title} `)  
+		console.log(` Body : ${note.body}`);
+	}
+	else
+	{
+		console.log("Title already in use")
+	}
 }
 else if(command === 'remove')
 {
 	//console.log('removing notes')
-	note.removeNote(argv.title);
+	notes.removeNote(argv.title);
 }
 else if(command === 'read')
 {
 	//console.log('reading my notes')
-	note.readNote(argv.title);
+	notes.readNote(argv.title);
 
 }
 else

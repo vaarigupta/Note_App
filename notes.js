@@ -2,37 +2,50 @@ console.log("STARTING Note.js");
 const yargs = require('yargs');
 const argv = yargs.argv;
 const fs = require('fs');
+/* this is called refactoring
+ when we create functions for those functionalities
+ which need to be used at various places in the program
+ */
+
+const fetchNote = ()=>{
+	try
+	{
+		 var notes_array = fs.readFileSync("notes-add.json");
+		 return JSON.parse(notes_array);
+	}
+
+	catch(e)
+	{
+          return [];
+	}
+}
+const saveNote = (notes)=>
+{
+	fs.writeFileSync("notes-add.json",notes);
+}
 const addNote = (title,body)=>
 {
-var notes = [];
+var notes = fetchNote();
 var note = {
 	title ,
 	body
 }
-try
-{
-	 var notes_array = fs.readFileSync("notes-add.json");
-	 notes = JSON.parse(notes_array);
-}
 
-catch(e)
-{
-
-}
 var duplicate_check = notes.filter((note)=>{
 	return note.title === title 
 })
 if(duplicate_check.length == 0)
 {
 	notes.push(note);
-var noteString = JSON.stringify(notes);
-fs.writeFileSync("notes-add.json",noteString);
+ notes = JSON.stringify(notes);
+ saveNote(notes);
+ return note;
+
 }
-
-
-
-
-
+else
+{
+	return undefined ;
+}
 	
 }
 const getAll = ()=>
