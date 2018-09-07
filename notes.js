@@ -1,8 +1,38 @@
 console.log("STARTING Note.js");
 const yargs = require('yargs');
 const argv = yargs.argv;
+const fs = require('fs');
 const addNote = (title,body)=>
 {
+var notes = [];
+var note = {
+	title ,
+	body
+}
+try
+{
+	 var notes_array = fs.readFileSync("notes-add.json");
+	 notes = JSON.parse(notes_array);
+}
+
+catch(e)
+{
+
+}
+var duplicate_check = notes.filter((note)=>{
+	return note.title === title 
+})
+if(duplicate_check.length == 0)
+{
+	notes.push(note);
+var noteString = JSON.stringify(notes);
+fs.writeFileSync("notes-add.json",noteString);
+}
+
+
+
+
+
 	
 }
 const getAll = ()=>
