@@ -25,30 +25,40 @@ else if(command === 'add')
 	var note = notes.addNote(argv.title , argv.body);
 	if(note)
 	{
-		console.log("A new note is added")
-		console.log("--")
-		console.log(`Title : ${note.title} `)  
-		console.log(` Body : ${note.body}`);
+		console.log("New note added")
+		notes.logNote(note);
 	}
 	else
 	{
-		console.log("Oops!...This title already used")
+		console.log("Oops!! title already used")
 	}
+}
+else if(command === 'read')
+{
+	//console.log('reading my notes')
+
+	var note = notes.readNote(argv.title);
+	if(note)
+	{
+		console.log("Reading note");
+		notes.logNote(note);
+	}
+	else
+	{
+		console.log("Sorry ! Note was not found");
+	}
+
+
 }
 else if(command === 'remove')
 {
 	//console.log('removing notes')
 
 	var NoteRemoved = notes.removeNote(argv.title);
-	var message = NoteRemoved ? "A note was removed " : "No note exists with this title";
+	var message = NoteRemoved ? "Note removed " : "No note exists with this title";
 	console.log(message);
 }
-else if(command === 'read')
-{
-	//console.log('reading my notes')
-	notes.readNote(argv.title);
 
-}
 else
 {
 	console.log('not recognisable')
