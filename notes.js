@@ -36,10 +36,10 @@ var duplicate_check = notes.filter((note)=>{
 })
 if(duplicate_check.length == 0)
 {
-	notes.push(note);
- notes = JSON.stringify(notes);
- saveNote(notes);
- return note;
+	 notes.push(note);
+	 notes = JSON.stringify(notes);
+	 saveNote(notes);
+	 return note;
 
 }
 else
@@ -54,15 +54,32 @@ const getAll = ()=>
 }
 const readNote =(title)=>
 {
-  console.log('Title :',title,' ,Body :',argv.body)
+  //console.log('Title :',title,' ,Body :',argv.body)
+  
 }
 const removeNote =(title)=>
 {
-	console.log('Removing Notes')
-	argv.title = ''
-	argv.body= ''
-	console.log('Title :',argv.title,' ,Body :',argv.body)
+// 	console.log('Removing Notes')
+// 	argv.title = ''
+// 	argv.body= ''
+// 	console.log('Title :',argv.title,' ,Body :',argv.body)
+
+//fetch notes
+var notes = fetchNote();
+//filter the notes and check for the title and change
+var filteredNotes = notes.filter((note)=> {
+	if(note.title !== title)
+	{
+		return note;
+	}
+});
+//save new notes array
+saveNote(filteredNotes);
+
+return notes.length !== filteredNotes.length;
 }
+
+
 module.exports ={
 	addNote,
 	getAll,

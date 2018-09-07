@@ -32,13 +32,16 @@ else if(command === 'add')
 	}
 	else
 	{
-		console.log("Title already in use")
+		console.log("Oops!...This title already used")
 	}
 }
 else if(command === 'remove')
 {
 	//console.log('removing notes')
-	notes.removeNote(argv.title);
+
+	var NoteRemoved = notes.removeNote(argv.title);
+	var message = NoteRemoved ? "A note was removed " : "No note exists with this title";
+	console.log(message);
 }
 else if(command === 'read')
 {
