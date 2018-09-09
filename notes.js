@@ -1,21 +1,29 @@
 //console.log("STARTING Note.js");
 const yargs = require('yargs');
-const argv = yargs.
-command( 'add','Adding a new note' ,
-{
-title:
-{
+const title ={
 	describe:"Title of the Note",
 	alias : 't',
 	demand : true
-},
-body :
+}
+const body =
 {
 	describe:"Body of the Note",
 	alias : 'b',
 	demand : true
 }
+const argv = yargs.
+command( 'add','Adding a new note' ,
+{
+title,
+body
 
+})
+.command('list','Listing all the notes')
+.command('read' , 'Reading a note',{
+	title
+})
+.command('remove','Removing the note',{
+	title
 })
 .help().argv;
 const fs = require('fs');
