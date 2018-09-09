@@ -22,10 +22,9 @@ body
 .command('read' , 'Reading a note',{
 	title
 })
-.command('remove','Removing the note',{
+.command('remove','Removing a note',{
 	title
-})
-.help().argv;
+}).argv;
 const fs = require('fs');
 /* this is called refactoring
  when we create functions for those functionalities
