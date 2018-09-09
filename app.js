@@ -1,4 +1,4 @@
-console.log("STARTING app.js");
+//console.log("STARTING app.js");
 
 //const os = require('os');
 const fs = require('fs');
@@ -17,7 +17,9 @@ const argv = yargs.argv; // yargs is an object having a key argv which is again 
 if(command === 'list')
 {
 	//console.log("Listing notes")
-	notes.getAll();
+	var allNotes = notes.getAll();
+	console.log(`Printing all the ${allNotes.length} notes `)
+	allNotes.forEach((note)=> notes.logNote(note));
 }
 else if(command === 'add')
 {
@@ -63,16 +65,22 @@ else
 {
 	console.log('not recognisable')
 }
-console.log("yargs argv object:-" , argv);
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------
+
+
+//console.log("yargs argv object:-" , argv);
 //console.log(process);
 //console.log(yargs);
-
-
-
-
-
-
-
 
 
 // fs.appendFile('intro.txt', "Helloo world",function(err){

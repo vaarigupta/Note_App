@@ -1,6 +1,23 @@
-console.log("STARTING Note.js");
+//console.log("STARTING Note.js");
 const yargs = require('yargs');
-const argv = yargs.argv;
+const argv = yargs.
+command( 'add','Adding a new note' ,
+{
+title:
+{
+	describe:"Title of the Note",
+	alias : 't',
+	demand : true
+},
+body :
+{
+	describe:"Body of the Note",
+	alias : 'b',
+	demand : true
+}
+
+})
+.help().argv;
 const fs = require('fs');
 /* this is called refactoring
  when we create functions for those functionalities
@@ -50,8 +67,11 @@ else
 }
 const getAll = ()=>
 {
-  console.log("Getting all the notes")
+  //console.log("Getting all the notes")
+  var allNotes = fetchNote();
+  return allNotes;
 }
+
 const readNote =(title)=>
 {
   //console.log('Title :',title,' ,Body :',argv.body)
