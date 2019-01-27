@@ -35,7 +35,8 @@ const fetchNote = ()=>{
 	try
 	{
 		 var notes_array = fs.readFileSync("notes-add.json");
-		 return JSON.parse(notes_array);
+		 var notes = JSON.parse(notes_array);
+		 return notes;
 	}
 
 	catch(e)
@@ -45,7 +46,7 @@ const fetchNote = ()=>{
 }
 const saveNote = (notes)=>
 {
-	fs.writeFileSync("notes-add.json",notes);
+	fs.writeFileSync("notes-add.json",JSON.stringify(notes));
 }
 const addNote = (title,body)=>
 {
@@ -56,12 +57,11 @@ var note = {
 }
 
 var duplicate_check = notes.filter((note)=>{
-	return note.title === title 
+	return note.title === title;
 })
-if(duplicate_check.length == 0)
+if(duplicate_check.length === 0)
 {
 	 notes.push(note);
-	 notes = JSON.stringify(notes);
 	 saveNote(notes);
 	 return note;
 
@@ -70,7 +70,7 @@ else
 {
 	return undefined ;
 }
-	
+
 }
 const getAll = ()=>
 {
@@ -82,9 +82,12 @@ const getAll = ()=>
 const readNote =(title)=>
 {
   //console.log('Title :',title,' ,Body :',argv.body)
+	/// Fetch Notes
   var notes = fetchNote();
+	/// Filter Notes and Extract the note with same title as input
   var filteredNote = notes.filter((note)=>note.title=== title);
-  return filteredNote[0];
+  var note = (filteredNote.length>0)? filteredNote[0] : undefined;
+	return  note;
 
 
 }
@@ -98,12 +101,7 @@ const removeNote =(title)=>
 //fetch notes
 var notes = fetchNote();
 //filter the notes and check for the title and change
-var filteredNotes = notes.filter((note)=> {
-	if(note.title !== title)
-	{
-		return note;
-	}
-});
+var filteredNotes = notes.filter((note)=> note.title!==title);
 //save new notes array
 saveNote(filteredNotes);
 
@@ -111,7 +109,7 @@ return notes.length !== filteredNotes.length;
 }
 
 var logNote = (note)=>
-{ 
+{
 		console.log("--");
 		console.log(`Title : ${note.title} `);
 		console.log(` Body : ${note.body}`);
@@ -142,7 +140,7 @@ module.exports ={
 // module.exports.age = 21;
 // module.exports.fun = function()
 // {
-	
+
 // 	return "Hey vaari";
 // }
 
