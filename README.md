@@ -5,35 +5,36 @@ It is CLI based application which provides users to create , read , list and rem
 ## Commands
 Run the following commands for implementing following operations inside the root folder :-
 
-##Adding a Note
+## Adding a Note
 
 ```
 node app add -t="..." -b="...."
 
 ```
-##Reading a Note
+## Reading a Note
 
 ```
 node app read -t="..."
 
 ```
-##Removing a Note
+## Removing a Note
 
 ```
 node app remove -t="..."
 
 ```
-##Listing all Notes
+## Listing all Notes
 
 ```
 node app list
 
 ```
 
-## Snap of Working Program
+## Working Program
 ![Commands](/NoteApp.png)
 
 ## To See All the commands and alias for each operations
+Run the command 
 ```
 node app --help
 ```
