@@ -31,11 +31,12 @@ const fs = require('fs');
  which need to be used at various places in the program
  */
 
+ // Return the notes array from json file by converting all content of json to array
 const fetchNote = ()=>{
 	try
 	{
-		 var notes_array = fs.readFileSync("notes-add.json");
-		 var notes = JSON.parse(notes_array);
+		 var notes_array = fs.readFileSync("notes-add.json"); // reading json string from file 
+		 var notes = JSON.parse(notes_array); /// parsing json string and converting it into array
 		 return notes;
 	}
 
@@ -56,6 +57,15 @@ var note = {
 	body
 }
 
+/*
+
+The filter() method creates an array filled with all array elements that pass a test (provided as a function).
+
+Note: filter() does not execute the function for array elements without values.
+
+Note: filter() does not change the original array.
+
+*/
 var duplicate_check = notes.filter((note)=>{
 	return note.title === title;
 })
@@ -93,10 +103,6 @@ const readNote =(title)=>
 }
 const removeNote =(title)=>
 {
-// 	console.log('Removing Notes')
-// 	argv.title = ''
-// 	argv.body= ''
-// 	console.log('Title :',argv.title,' ,Body :',argv.body)
 
 //fetch notes
 var notes = fetchNote();
